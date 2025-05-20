@@ -4,15 +4,15 @@ namespace TicTacDoomConsole
 { 
     public class GameLogic
     {
-        private char[,] grid = new char[3, 3];
+        //private char[,] grid = new char[3, 3];
         private bool isPlayerX = true;
 
         public GameLogic()
         {
-            InitializeGrid();
+           // InitializeGrid();
         }
 
-        public void InitializeGrid()
+        public char[,] InitializeGrid(char[,] grid)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -21,6 +21,7 @@ namespace TicTacDoomConsole
                     grid[i, j] = ' ';
                 }
             }
+            return grid;
         }
 
         public void DisplayGrid(char[,] grid)
@@ -39,12 +40,12 @@ namespace TicTacDoomConsole
             Console.WriteLine("-----------");
         }
 
-        public char[,] GetGrid()
+        public char[,] GetGrid(char[,] grid)
         {
             return grid;
         }
 
-        public bool MakeMove(int row, int col)
+        public bool MakeMove(int row, int col, char[,] grid ) 
         {
             if (row >= 0 && row < 3 && col >= 0 && col < 3 && grid[row, col] == ' ')
             {
@@ -55,7 +56,7 @@ namespace TicTacDoomConsole
             return false;
         }
 
-        public bool CheckForWinner()
+        public bool CheckForWinner(char[,] grid)
         {
             // Check rows, columns, and diagonals for a winner
             for (int i = 0; i < 3; i++)
@@ -84,7 +85,7 @@ namespace TicTacDoomConsole
             return false;
         }
 
-        public bool CheckForTie()
+        public bool CheckForTie(char[,] grid)
         {
             foreach (char cell in grid)
             {

@@ -10,11 +10,12 @@ namespace TicTacDoomConsole
         {
             GameLogic game = new GameLogic();
             bool gameOver = false;
-            int show;
+            char[,] grid = new char[3, 3];
 
             while (!gameOver)
             {
-                DisplayGrid(game.GetGrid());
+                grid = game.InitializeGrid(grid);
+                game.DisplayGrid(grid);
                 gameOver = MakeMove(game);
                 if (!gameOver)
                 {
@@ -26,7 +27,6 @@ namespace TicTacDoomConsole
                 }
             }
 
-            show = game.DisplayGrid;
             Console.WriteLine("Game Over!");
         }
 
