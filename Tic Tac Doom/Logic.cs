@@ -23,6 +23,22 @@ namespace TicTacDoomConsole
             }
         }
 
+        public void DisplayGrid(char[,] grid)
+        {
+            Console.Clear();
+            Console.WriteLine("Tic Tac Doom");
+            Console.WriteLine("-----------");
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine(" " + grid[i, 0] + " | " + grid[i, 1] + " | " + grid[i, 2]);
+                if (i < 2)
+                {
+                    Console.WriteLine("---+---+---");
+                }
+            }
+            Console.WriteLine("-----------");
+        }
+
         public char[,] GetGrid()
         {
             return grid;

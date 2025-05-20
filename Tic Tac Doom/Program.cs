@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using TicTacDoomConsole;
 
 namespace TicTacDoomConsole
@@ -9,6 +10,7 @@ namespace TicTacDoomConsole
         {
             GameLogic game = new GameLogic();
             bool gameOver = false;
+            int show;
 
             while (!gameOver)
             {
@@ -24,25 +26,10 @@ namespace TicTacDoomConsole
                 }
             }
 
-            DisplayGrid(game.GetGrid());
+            show = game.DisplayGrid;
             Console.WriteLine("Game Over!");
         }
 
-        private static void DisplayGrid(char[,] grid)
-        {
-            Console.Clear();
-            Console.WriteLine("Tic Tac Toe");
-            Console.WriteLine("-----------");
-            for (int i = 0; i < 3; i++)
-            {
-                Console.WriteLine(" " + grid[i, 0] + " | " + grid[i, 1] + " | " + grid[i, 2]);
-                if (i < 2)
-                {
-                    Console.WriteLine("---+---+---");
-                }
-            }
-            Console.WriteLine("-----------");
-        }
 
         private static bool MakeMove(GameLogic game)
         {
