@@ -21,7 +21,7 @@ namespace TicTacDoomConsole
             while (!gameOver)
             {
                 ui.DisplayGrid(grid);
-                gameOver = ui.MakeMove(game);
+                gameOver = ui.MakeMove(game, grid);
                 if (!gameOver)
                 {
                     gameOver = game.CheckForWinner(grid);

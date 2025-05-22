@@ -26,7 +26,7 @@ namespace Tic_Tac_Doom
             Console.WriteLine("-----------");
         }
 
-        public void MakeMove(GameLogic game, char[,] grid)
+        public bool MakeMove(GameLogic game, char[,] grid)
         {
             int row, col;
             do
