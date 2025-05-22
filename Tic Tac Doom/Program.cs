@@ -1,29 +1,34 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Tic_Tac_Doom;
 using TicTacDoomConsole;
 
 namespace TicTacDoomConsole
 {
     class Program
     {
+        
+
         static void Main(string[] args)
         {
             GameLogic game = new GameLogic();
+            UI ui = new UI();
             bool gameOver = false;
+
             char[,] grid = new char[3, 3];
+            grid = game.InitializeGrid(grid);
 
             while (!gameOver)
             {
-                grid = game.InitializeGrid(grid);
-                game.DisplayGrid(grid);
-                gameOver = MakeMove(game);
+                ui.DisplayGrid(grid);
+                gameOver = ui.MakeMove(game);
                 if (!gameOver)
                 {
-                    gameOver = game.CheckForWinner();
+                    gameOver = game.CheckForWinner(grid);
                 }
                 if (!gameOver)
                 {
-                    gameOver = game.CheckForTie();
+                    gameOver = game.CheckForTie(grid);
                 }
             }
 
@@ -31,31 +36,6 @@ namespace TicTacDoomConsole
         }
 
 
-        private static bool MakeMove(GameLogic game)
-        {
-            int row, col;
-            do
-            {
-                Console.Write($"Player {(game.GetGrid()[0, 0] == ' ' ? 'X' : 'O')}, enter your move (row and column): ");
-                string input = Console.ReadLine();
-                string[] coordinates = input.Split(' ');
-                if (coordinates.Length == 2 && int.TryParse(coordinates[0], out row) && int.TryParse(coordinates[1], out col))
-                {
-                    if (game.MakeMove(row, col))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid move. Try again.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Try again.");
-                }
-            } while (true);
-            return false;
-        }
+        
     }
 }
