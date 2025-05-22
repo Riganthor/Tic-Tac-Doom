@@ -4,13 +4,8 @@ namespace TicTacDoomConsole
 { 
     public class GameLogic
     {
-        //private char[,] grid = new char[3, 3];
         private bool isPlayerX = true;
 
-        public GameLogic()
-        {
-           // InitializeGrid();
-        }
 
         public char[,] InitializeGrid(char[,] grid)
         {
