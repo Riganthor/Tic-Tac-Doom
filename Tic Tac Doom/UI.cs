@@ -7,8 +7,19 @@ using TicTacDoomConsole;
 
 namespace Tic_Tac_Doom
 {
+
+    
+
     public class UI
     {
+        string VersusChoice = "2P";
+
+        public void PlayerChoice() 
+        {
+            Console.WriteLine("Welcome to Tic Tac Doom, Do you wish to play with 2 players or versus AI, Type AI if you want to play against an AI");
+            VersusChoice = Console.ReadLine();
+
+        }
 
         public void DisplayGrid(char[,] grid)
         {
@@ -52,6 +63,8 @@ namespace Tic_Tac_Doom
             } while (true);
             return false;
         }
+
+
 
     }
 }

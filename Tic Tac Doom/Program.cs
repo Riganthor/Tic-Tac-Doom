@@ -13,9 +13,10 @@ namespace TicTacDoomConsole
         {
             GameLogic game = new GameLogic();
             UI ui = new UI();
+            AI ai = new AI();
             bool gameOver = false;
 
-            char[,] grid = new char[3, 3];
+            char[,] grid = new char[3, 3]; 
             grid = game.InitializeGrid(grid);
 
             while (!gameOver)
