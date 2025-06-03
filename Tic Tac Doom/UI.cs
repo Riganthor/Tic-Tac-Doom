@@ -12,7 +12,7 @@ namespace Tic_Tac_Doom
 
     public class UI
     {
-        string VersusChoice = "2P";
+        string VersusChoice = "2P"; //standard is 2 players, no AI
 
         public void PlayerChoice() 
         {

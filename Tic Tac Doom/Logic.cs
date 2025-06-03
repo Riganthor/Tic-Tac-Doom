@@ -1,4 +1,5 @@
 ﻿using System;
+using static TicTacDoomConsole.GameLogic;
 
 namespace TicTacDoomConsole
 { 
@@ -6,6 +7,21 @@ namespace TicTacDoomConsole
     {
         private bool isPlayerX = true;
 
+
+        public enum GameMode
+        {
+            TwoPlayers,
+            PlayerVsAI
+        }
+        public GameLogic(GameMode mode)
+        {
+            GameMode = mode;
+
+            if (GameMode == GameMode.PlayerVsAI)
+            {
+                aiPlayer = new AIPlayer(); // Replace with your actual AI instantiation
+            }
+        }
 
         public char[,] InitializeGrid(char[,] grid)
         {
@@ -26,16 +42,26 @@ namespace TicTacDoomConsole
             return grid;
         }
 
-        public bool MakeMove(int row, int col, char[,] grid ) 
+        public bool MakeMove(int row, int col, char[,] grid)
         {
             if (row >= 0 && row < 3 && col >= 0 && col < 3 && grid[row, col] == ' ')
             {
                 grid[row, col] = isPlayerX ? 'X' : 'O';
+
+                if (GameMode == GameMode.PlayerVsAI && !isPlayerX)
+                {
+                    isPlayerX = !isPlayerX;
+                    return true; // Skip AI move here; handle it externally
+                }
+
                 isPlayerX = !isPlayerX;
                 return true;
             }
             return false;
         }
+
+
+
 
         public bool CheckForWinner(char[,] grid)
         {
