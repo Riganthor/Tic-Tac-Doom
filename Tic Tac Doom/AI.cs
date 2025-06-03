@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tic_Tac_Doom
+﻿namespace TicTacDoomConsole
 {
     internal class AI
     {
@@ -18,8 +12,7 @@ namespace Tic_Tac_Doom
             {
                 row = rand.Next(0, 3);
                 col = rand.Next(0, 3);
-            }
-            while (grid[row, col] != ' '); // Keep trying until an empty cell is found
+            } while (grid[row, col] != ' ');
 
             return (row, col);
         }

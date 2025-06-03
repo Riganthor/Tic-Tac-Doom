@@ -13,6 +13,12 @@ namespace TicTacDoomConsole
             TwoPlayers,
             PlayerVsAI
         }
+
+        public bool IsPlayerXTurn()
+        {
+            return isPlayerX;
+        }
+
         public GameLogic(GameMode mode)
         {
             GameMode = mode;
